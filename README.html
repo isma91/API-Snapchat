@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>README</title>
+	<style type="text/css">
+	body {
+		font-size: 1.3em;
+		}</style>
+</head>
+<body>
+<pre><b>======================================================================
+============================== DOC API ===============================
+======================================================================</b></pre>
+<b>TOUTES les réponses de l'API sont sous la forme d'un objet JSON :</b>
+<pre>{
+error : , // false si pas d'erreur, sinon erreur écrite
+data : // un objet contenant les données demandé
+token : // pour la connexion seulement
+}
+</pre>
+<pre>
+========== Inscription ==========
+<b>http://37.187.20.82:3000/api.js?option=inscription</b>
+Envoyer post : {'email' : nom@domaine.fr, 'password' : *****}
+<b>Renvoie si pas d'erreur : rien</b>
+</pre>
+<pre>
+========== Connexion ==========
+<b>http://37.187.20.82:3000/api.js?option=connexion</b>
+Envoyer post : {'email' : nom@domaine.fr, 'password' : *****}
+<b>Renvoie si pas d'erreur : id, email et token de l'utilisateur connecter</b>
+</pre>
+<pre>
+========== Liste des inscrits ==========
+<b>http://37.187.20.82:3000/api.js?option=toutlemonde</b>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken}
+<b>Renvoie si pas d'erreur : id et email de tous les inscrits</b>
+</pre>
+<pre>
+========== Envoie snap ==========
+<b>http://37.187.20.82:3000/api.js?option=image</b>
+Envoyer en paramètre l'email de l'expediteur dans 'email', l'id du destinataire dans 'u2', la durée visible du snap dans 'temps' et le token d'authentification dans 'token';
+Envoyer post : {'email' : emailEnvoyeur, 'u2' : idRecever, 'temps': tempsSnap, 'token': AuthToken}
+Lors de l'envoie du fichier, oublier pas de mettre :
+fileKey = 'file', mimeType = 'image/jpeg';
+<b>Renvoie si pas d'erreur : rien</b>
+</pre>
+<pre>
+========== Récupérer vos snap ==========
+<b>http://37.187.20.82:3000/api.js?option=newsnap</b>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken}
+<b>Renvoie si pas d'erreur : email de l'envoyeur, id du snap, image du snap, temps du snap</b>
+</pre>
+<pre>
+========== Valider la vu d'un snap ==========
+<b>http://37.187.20.82:3000/api.js?option=vu</b>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'id': idSnap}
+<b>Renvoie si pas d'erreur : rien</b>
+</pre>
+<pre>
+========== Changer votre mot de passe ==========
+<b>http://37.187.20.82:3000/api.js?option=changePass</b>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'actuelPass': motDePasseActuel, 'newPass': nouveauMotDePasse}
+<b>Renvoie si pas d'erreur : rien</b>
+</pre>
+<pre>
+========== Changer votre nom et votre prenom ==========
+<b>http://37.187.20.82:3000/api.js?option=changeInfoUser</b>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'nom': nom, 'prenom':prenom}
+<b>Renvoie si pas d'erreur : rien</b>
+</pre>
+<pre>
+========== Récupérer vos identifiants ==========
+<b>http://37.187.20.82:3000/api.js?option=userInfo</b>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken}
+<b>Renvoie si pas d'erreur : votre email, nom, prenom et votre photo de profil</b>
+</pre>
+<pre>
+========== Changer votre photo de profil ==========
+<b>http://37.187.20.82:3000/api.js?option=photoProfil</b>
+Envoyer en paramètre votre email dans 'email' et le token d'authentification dans 'token';
+Envoyer post : {'email' : emailEnvoyeur, 'token': AuthToken}
+Lors de l'envoie du fichier, oublier pas de mettre :
+fileKey = 'file', mimeType = 'image/jpeg';
+<b>Renvoie si pas d'erreur : rien</b>
+</pre>
+</body>
+</html>
